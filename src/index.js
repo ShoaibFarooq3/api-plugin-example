@@ -6,17 +6,23 @@ const require = createRequire(import.meta.url);
 
 function myStartup(context) {
   context.simpleSchemas.ProductVariant.extend({
-    volume: {
-      type: Number,
-      min: 0,
+    color: {
+      type: String,
+      optional: true,
+    },
+    size: {
+      type: String,
       optional: true,
     },
   });
 
   context.simpleSchemas.CatalogProductVariant.extend({
-    volume: {
-      type: Number,
-      min: 0,
+    color: {
+      type: String,
+      optional: true,
+    },
+    size: {
+      type: String,
       optional: true,
     },
   });
@@ -31,7 +37,8 @@ function myPublishProductToCatalog(
       const productVariant = variants.find(
         (variant) => variant._id === catalogVariant.variantId
       );
-      catalogVariant.volume = productVariant.volume || null;
+      catalogVariant.color = productVariant.color || null;
+      catalogVariant.size = productVariant.size || null;
     });
 }
 async function register(app) {

@@ -1,11 +1,14 @@
 extend type ProductVariant {
-  volume: Float
+  size: String
+  color: String
 }
 
 extend input ProductVariantInput {
-  volume: Float
+  size: String
+  color: String
 }
 
 extend type CatalogProduct {
-  volume: Float
+  size: String
+  color: String
 }
