@@ -1,8 +1,8 @@
 import { createRequire } from "module";
 import importAsString from "@reactioncommerce/api-utils/importAsString.js";
 const mySchema = importAsString("./schema/schema.graphql");
-// const pkg = createRequire("../package.json");
 const require = createRequire(import.meta.url);
+import pkg from "../package.json";
 
 function myStartup(context) {
   context.simpleSchemas.ProductVariant.extend({
@@ -43,9 +43,9 @@ function myPublishProductToCatalog(
 }
 async function register(app) {
   await app.registerPlugin({
-    label: "1",
-    name: "name",
-    version: "1.2-pkg.version",
+    label: pkg.label,
+    name: pkg.name,
+    version: pkg.version,
     functionsByType: {
       startup: [myStartup],
       publishProductToCatalog: [myPublishProductToCatalog],
